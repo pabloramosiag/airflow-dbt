@@ -1,0 +1,5 @@
+/dbt-env
+/airflow/logs
+/postgresql
+/logs
+.env

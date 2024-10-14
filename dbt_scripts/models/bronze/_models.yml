@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: RAW_CI_CIRCUITS
+    config:
+      materialized: table
+  - name: RAW_ACCESO_EXTERNO
+    config:
+      materialized: table
+    
