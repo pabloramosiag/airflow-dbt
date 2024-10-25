@@ -1,0 +1,44 @@
+# all commands by default will run on every commit
+default_install_hook_types: [pre-commit]
+default_stages: [commit]
+# some configs are only available after v2.18
+minimum_pre_commit_version: "2.18"
+
+repos:
+  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+    rev: ff163fa47ce6c9a661d50f8144e79c81686edc43
+    hooks:
+      # - id: check-model-columns-have-desc
+      #   files: ^dbt_scripts/models/
+      #   args: ["--manifest", "dbt_scripts/target/manifest.json", "--"]
+      - id: check-model-has-properties-file
+        files: ^dbt_scripts/models/
+        args: ["--manifest", "dbt_scripts/target/manifest.json", "--"]
+      # - id: check-model-has-all-columns
+      #   files: ^dbt_scripts/models/
+      #   args: ["--manifest", "dbt_scripts/target/manifest.json", "--catalog", "dbt_scripts/target/catalog.json", "--"]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 873992cf07fee49661fd05cc963e6ae6b46e1462
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: 95e17b33dc147c9c35742853e17bdf3fd508550b
+    hooks:
+      - id: yamllint
+        args: [-c=.yamllint]
+
+
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: baa32b8836e1519e9c81f5e4a71fdd3ccfb842e0
+    hooks:
+      - id: sqlfluff-lint
+        language: system
+        files: ^dbt_scripts/models/  # Adjust this line according to the location of dbt sql files
+      - id: sqlfluff-fix
+        stages: [manual]  # this command is available only to run manually
+        language: system
+        files: ^dbt_scripts/models/

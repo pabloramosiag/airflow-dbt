@@ -1,0 +1,11 @@
+version: 2
+
+seeds:
+  - name: DM_PAISES
+    config:
+      alias: DM_PAISES
+      schema: public
+  - name: DM_PAISES_FR
+    config:
+      alias: DM_PAISES_FR
+      schema: snapshot

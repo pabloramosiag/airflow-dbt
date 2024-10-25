@@ -1,4 +1,3 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -14,7 +13,7 @@ profile: 'dbt_scripts'
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
-seed-paths: ["seeds"]
+seed-paths: ["models"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
@@ -32,7 +31,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_scripts:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
     bronze:
+      +materialized: table
+    silver:
       +materialized: table

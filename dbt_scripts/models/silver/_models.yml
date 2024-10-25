@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: DM_PAISES_UNIFIED
+    description: Tabla de paises unificada
+    config:
+      materialized: table
+      alias: DM_PAISES
+      schema: silver
