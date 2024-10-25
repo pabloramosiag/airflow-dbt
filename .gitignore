@@ -3,3 +3,4 @@
 /postgresql
 /logs
 .env
+**/__pycache__/
