@@ -1,5 +1,5 @@
-dbt-core==1.6.13
-dbt-postgres==1.6.13
+dbt-core==1.8.2
+dbt-postgres==1.8.2
 Jinja2==3.1.4
 pre-commit==3.7.0
 PyYAML==6.0.1
@@ -13,3 +13,4 @@ yamllint==1.35.1
 psycopg2-binary==2.9.9
 pycparser==2.22
 requests==2.32.3
+cryptography

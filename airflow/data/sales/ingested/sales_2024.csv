@@ -1,0 +1,6 @@
+sale_id,name,order_type,order_date,order_value
+001,John Doe,Online,2024-10-25,100.00
+002,Jane Smith,In-Store,2024-10-26,200.50
+003,Bob Johnson,Online,2024-10-27,150.75
+004,Alice Brown,In-Store,2024-10-28,300.25
+005,Pablo Ramos,In-Store,2024-10-28,600.25
