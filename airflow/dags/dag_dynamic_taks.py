@@ -10,6 +10,7 @@ with DAG(
     schedule=None,
     start_date=datetime(2021, 1, 1),
     catchup=False,
+    tags=['FORMACION']
 ):
     tasks = []
     for task in ALL_TASKS:
