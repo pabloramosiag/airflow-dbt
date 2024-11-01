@@ -11,18 +11,32 @@ DAG = DAG(
 
 def push_function(**kwargs):
     ls = ['a', 'b', 'c']
-    return ls
+    a = ['g']
+    ti = kwargs['ti']
+    ti.xcom_push(key="example1", value='d')
+    ti.xcom_push(key="example1", value='e')
+    return ls, a
 
-push_task = PythonOperator(
-    task_id='push_task', 
+push_task1 = PythonOperator(
+    task_id='push_task1', 
     python_callable=push_function,
     provide_context=True,
     dag=DAG)
 
+push_task2 = PythonOperator(
+    task_id='push_task2', 
+    python_callable=push_function,
+    provide_context=True,
+    dag=DAG)
+
+# ti.xcom_push(key="return_value", value=ls)
+
 def pull_function(**kwargs):
     ti = kwargs['ti']
-    ls = ti.xcom_pull(task_ids='push_task')
+    print(ti.xcom_pull(key="return_value", task_ids='push_task1'))
+    ls = ti.xcom_pull(task_ids='push_task2')
     print(ls)
+    print(ti.xcom_pull(key="example1", task_ids='push_task1'))
 
 pull_task = PythonOperator(
     task_id='pull_task', 
@@ -30,4 +44,4 @@ pull_task = PythonOperator(
     provide_context=True,
     dag=DAG)
 
-push_task >> pull_task
+push_task1 >> push_task2 >> pull_task

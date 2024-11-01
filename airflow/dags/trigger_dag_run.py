@@ -38,6 +38,7 @@ with DAG(
         trigger_dag_id="Example-dag",
         wait_for_completion=True,
         deferrable=True,
+        poke_interval = 5
     )
 
     end_task = PythonOperator(
