@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: public
+    schema: public
+    tables:
+      - name: customer_feedback
+        description: Customer feedback and comments
+        columns:
+          - name: customer_id
+            data_type: character varying(1000)
+            description: The unique identifier associated with each customer
+          - name: comment
+            data_type: character varying(50)
+            description: Free text input
+          - name: created_at
+            data_type: date
+            description: Insertion Timestamp
+
+      - name: supliers
+        description: Dimension table for SUPPLIERS
+        columns:
+          - name: supplier
+            description: Supplier name
+            data_type: VARCHAR(255)
+          - name: description
+            description: Supplier description
+            data_type: VARCHAR(16777216)
+          - name: created_at
+            description: Insertion Timestamp
+            data_type: TIMESTAMP_NTZ(9)
